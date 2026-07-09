@@ -30,6 +30,18 @@ PAGE_SIZE = (
 )
 
 
+def create_raw_table(conn):
+    with conn.cursor() as cur:
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS raw_tickets (
+                ticket_id TEXT PRIMARY KEY,
+                raw_json JSONB NOT NULL,
+                ingested_at TIMESTAMP DEFAULT now()
+            )
+        """)
+    conn.commit()
+
+
 def fetch_page(cursor=None, retries=3):
     """Fetch one page of tickets. Retries on transient network failures."""
     params = {"limit": PAGE_SIZE}
@@ -70,6 +82,7 @@ def save_page(conn, tickets):
 
 def main():
     conn = psycopg2.connect(DATABASE_URL)
+    create_raw_table(conn)
     cursor = None
     page_num = 0
     total_ingested = 0

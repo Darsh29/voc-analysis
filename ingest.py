@@ -1,3 +1,15 @@
+"""
+FILE: ingest.py
+PURPOSE: Pulls all available tickets from the CookUnity take-home API and
+stores them, unmodified, in Postgres.
+WHY THIS APPROACH: Writes raw JSON (not a fixed schema) so undocumented
+fields discovered during /meta exploration aren't silently dropped.
+Paginates using next_cursor until the API returns null — no hardcoded
+page count, so it doesn't assume the dataset size in advance.
+INPUT: CookUnity take-home API (/api/takehome/v1/tickets).
+OUTPUT: raw_tickets table (Postgres) — one JSONB row per ticket.
+"""
+
 import os
 import time
 import requests

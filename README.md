@@ -111,6 +111,22 @@ Open `report.html` directly in a browser — no build step, no dev server.
 
 ## Failure modes / known limitations
 
+- **Theme labeling and consolidation (Claude API calls) are not deterministic
+  across runs, even on identical input data.** Proven, not theoretical: a
+  fresh-clone test ran the entire pipeline twice on the same 10,000 tickets.
+  Ingestion, cleaning, embeddings, and clustering came back bit-for-bit
+  identical both times (clustering uses a fixed `random_state`). Claude's
+  theme names and cluster groupings genuinely differed between runs — e.g.
+  "Discount and promotional pricing discrepancies" became "Discount and
+  promotion not applied correctly"; two previously-separate clusters merged
+  differently; one cluster flipped from "not a complaint" to a real issue.
+  Neither run was wrong — this is inherent to LLM-based reasoning, not a bug.
+  It does mean anything downstream that assumes exact theme wording is
+  fragile: `report.py`'s chart-highlighting logic originally hardcoded three
+  theme name strings, which a second real run would have silently broken
+  (2 of 3 no longer matched anything). Fixed by selecting highlights from
+  the data itself (most severe / fastest-growing / largest actionable theme)
+  rather than by name — verified against the actual second run's output.
 - **Quote/footer-stripping targets CookUnity-specific literal strings**
   (e.g. "Cookin Inc. (DBA Cook Unity Inc.)"). The *pattern* (date + "wrote:"
   ... footer marker) is structural, but the specific footer text is not
@@ -122,11 +138,6 @@ Open `report.html` directly in a browser — no build step, no dev server.
   jokes like "Sent from my thumbs" instead of a real device name — a
   measured, accepted residual (0.02%), not a gap in an otherwise-complete
   rule.
-- **`HIGHLIGHT_THEMES` in `report.py` is hardcoded to three exact theme
-  names.** If this pipeline reruns on a new week of data and clustering
-  produces slightly different wording, the chart's callout labels would
-  silently show nothing rather than erroring — a real fragility, not yet
-  fixed.
 - **Trend percentages are volatile for low-volume themes** — flagged in the
   report (`volatile` tag below 150 total tickets) but the underlying
   first-half/second-half calculation itself doesn't correct for this, it
@@ -134,17 +145,24 @@ Open `report.html` directly in a browser — no build step, no dev server.
 - **11 tickets have no usable message text** (entirely forwarded marketing
   content) and are excluded from theme discovery, though they still
   contribute to the overall baseline.
-- **This has not yet been run start-to-finish on a completely fresh clone.**
-  Every stage has been validated individually and re-run many times during
-  development; a true clean-room run is a next step, not something already
-  confirmed.
+- **`ingest.py` originally relied on a manual, undocumented one-time
+  `CREATE TABLE` step** run directly in `psql` before the script existed —
+  meaning a fresh clone would fail on the very first run with
+  `relation "raw_tickets" does not exist`. Found via fresh-clone testing,
+  fixed by having `ingest.py` create its own table, consistent with every
+  other stage in the pipeline.
+- **This has now been run start-to-finish on a genuinely fresh clone**
+  (separate folder, fresh venv, fresh Postgres volume, no manual setup
+  beyond following this README) — confirmed working after the two fixes
+  above. Both gaps above were found by that process, not assumed away.
 
 ## Next steps
 
-- Run a genuine fresh-clone end-to-end test before considering this final.
-- Replace `HIGHLIGHT_THEMES`'s hardcoded strings with a data-driven rule
-  (e.g. top-N by absolute severity) so the report doesn't silently degrade
-  on a rerun with different cluster wording.
+- Consider pinning `temperature=0` on the Claude labeling/consolidation
+  calls as a partial mitigation for run-to-run naming variance — worth
+  testing whether it meaningfully increases consistency, since even
+  temperature 0 doesn't guarantee identical output from an LLM the way a
+  fixed `random_state` does for clustering.
 - dbt models over the current raw SQL in `analyze.py`, for testable,
   documented transformations if this became a recurring (not one-off) report.
 - An MCP server exposing `get_theme_trends`/`get_ticket_evidence` so a

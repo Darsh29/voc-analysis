@@ -290,7 +290,6 @@ def svg_scatter(themes, trends, baseline_churn, highlight_themes):
             f"<title>{p['name']} — {p['count']} tickets, {p['growth']:+.0f}% trend, churn {p['churn_rate'] * 100:.1f}%</title></circle>"
         )
         if p["name"] in highlight_themes:
-            label = truncate_label(p["name"], 30)
             label_y = cy - r - 10
             # Edge-aware anchoring: a center-anchored label near the left/right
             # boundary would extend past the viewBox and get clipped. Switch
@@ -301,12 +300,34 @@ def svg_scatter(themes, trends, baseline_churn, highlight_themes):
                 anchor, label_x = "start", cx
             else:
                 anchor, label_x = "middle", cx
-            # Background chip behind the label — monospace at 12px/weight 600
-            # is ~7.2px/char, so width is a reliable estimate without needing
-            # to measure rendered text. This guarantees the label stays
-            # readable even when it happens to pass near an unrelated dot,
-            # rather than relying on manual coordinate nudging per case.
-            chip_w = len(label) * 7.2 + 16
+
+            # Fit-aware truncation: show the FULL theme name whenever it
+            # actually fits in the available space, rather than always
+            # truncating at a fixed length. A fixed cutoff was producing
+            # awkward mid-phrase cuts ("...promotion not…") even after
+            # word-boundary truncation was fixed — this only shortens the
+            # label when the full name genuinely wouldn't fit.
+            char_w = 7.2  # monospace, 12px, weight 600
+            if anchor == "end":
+                available = (
+                    label_x - 15
+                )  # room from viewBox left edge (x=15) to the dot
+            elif anchor == "start":
+                available = (width - 15) - label_x  # room to viewBox right edge
+            else:
+                available = 2 * min(label_x - 15, (width - 15) - label_x)
+
+            full_w = len(p["name"]) * char_w + 16
+            if full_w <= available:
+                label = p["name"]
+            else:
+                max_chars = max(10, int((available - 16) / char_w))
+                label = truncate_label(p["name"], max_chars)
+
+            # Background chip behind the label — sized to whatever label
+            # (full or truncated) was actually chosen above, so it stays
+            # readable even when it happens to pass near an unrelated dot.
+            chip_w = len(label) * char_w + 16
             if anchor == "end":
                 chip_x = label_x - chip_w
             elif anchor == "start":

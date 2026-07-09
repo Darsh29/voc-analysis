@@ -49,17 +49,52 @@ TREND_LOW_CONFIDENCE_TICKETS = (
 )
 # a swing of a few tickets/day produces large % swings at low volume
 
-# Only these three get a permanent on-chart label — they're the specific
-# findings named in Step 7's writeup. Labeling every large/extreme dot
-# caused overlapping, unreadable text when several themes landed near
-# each other (see report v1 screenshots). All other themes still show
-# full detail via hover tooltip — nothing is hidden, just not permanently
-# labeled on the chart itself.
-HIGHLIGHT_THEMES = {
-    "Subscription cancellation requests",
-    "Unauthorized charges or deliveries despite cancellation/skip",
-    "Discount and promotional pricing discrepancies",
-}
+
+def select_highlight_themes(themes, trends, baseline_churn):
+    """Selects which themes get a permanent on-chart label, computed from
+    the actual data rather than hardcoded theme names. Proven necessary by
+    a fresh-clone test: label_clusters.py and consolidate_themes.py call
+    Claude with no fixed seed, so exact theme names/groupings can genuinely
+    differ between runs on identical input data (clustering itself IS
+    reproducible via random_state=42 — only the LLM naming/consolidation
+    steps vary). A hardcoded name list silently breaks the moment naming
+    changes on a rerun; selecting by the same severity/velocity logic the
+    chart already plots does not.
+    Picks: the most severe actionable theme (highest churn vs. baseline),
+    the fastest-growing actionable theme, and the largest actionable theme
+    by ticket volume — the same three angles the writeup discusses,
+    whatever their names happen to be this run."""
+    candidates = []
+    for row in themes:
+        (
+            theme_id,
+            name,
+            actionable,
+            count,
+            avg_csat,
+            csat_n,
+            res_hrs,
+            repeat_rate,
+            churn_rate,
+            churn_n,
+        ) = row
+        if not actionable:
+            continue
+        growth = trends.get(theme_id)
+        if growth is None:
+            continue
+        severity_pp = (float(churn_rate) - float(baseline_churn)) * 100
+        candidates.append(
+            {"name": name, "growth": growth, "severity": severity_pp, "count": count}
+        )
+
+    if not candidates:
+        return set()
+
+    most_severe = max(candidates, key=lambda c: c["severity"])["name"]
+    fastest_growing = max(candidates, key=lambda c: c["growth"])["name"]
+    largest = max(candidates, key=lambda c: c["count"])["name"]
+    return {most_severe, fastest_growing, largest}
 
 
 def fetch_data(conn):
@@ -162,7 +197,7 @@ def truncate_label(name, max_chars=30):
     return truncated + "…"
 
 
-def svg_scatter(themes, trends, baseline_churn):
+def svg_scatter(themes, trends, baseline_churn, highlight_themes):
     """Severity (churn delta vs baseline, percentage points) x Velocity
     (9-day directional trend %). One dot per actionable theme, sized by
     ticket count. This is the report's signature visual, not decoration
@@ -254,7 +289,7 @@ def svg_scatter(themes, trends, baseline_churn):
             f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="{color}" fill-opacity="0.75" stroke="{color}" stroke-width="1">'
             f"<title>{p['name']} — {p['count']} tickets, {p['growth']:+.0f}% trend, churn {p['churn_rate'] * 100:.1f}%</title></circle>"
         )
-        if p["name"] in HIGHLIGHT_THEMES:
+        if p["name"] in highlight_themes:
             label = truncate_label(p["name"], 30)
             label_y = cy - r - 10
             # Edge-aware anchoring: a center-anchored label near the left/right
@@ -302,7 +337,7 @@ def format_evidence(theme_id, evidence_map):
     return f"<details><summary>Evidence</summary>{''.join(parts)}</details>"
 
 
-def render_theme_row(row, trends, evidence_map):
+def render_theme_row(row, trends, evidence_map, highlight_themes):
     (
         theme_id,
         name,
@@ -340,8 +375,8 @@ def render_theme_row(row, trends, evidence_map):
     churn_class = "flag-warn" if churn_pct > 15 else ""
 
     star = (
-        '<span class="star" title="Discussed in the writeup as a specific finding">&#9733;</span> '
-        if name in HIGHLIGHT_THEMES
+        '<span class="star" title="Highlighted: most severe, fastest-growing, or largest actionable theme this run">&#9733;</span> '
+        if name in highlight_themes
         else ""
     )
 
@@ -375,12 +410,16 @@ def render_report(themes, baseline, trends, evidence_map, noise_count, empty_cou
     excluded = [r for r in themes if not r[2]]
     total_tickets = sum(r[3] for r in themes) + noise_count
 
-    rows_html = "".join(render_theme_row(r, trends, evidence_map) for r in actionable)
+    highlight_themes = select_highlight_themes(themes, trends, churn_b)
+
+    rows_html = "".join(
+        render_theme_row(r, trends, evidence_map, highlight_themes) for r in actionable
+    )
     excluded_html = "".join(
         f"<li><strong>{r[1]}</strong> — {r[3]:,} tickets. Excluded: these clustered by text similarity but are not customer complaints (confirmations, gratitude, ticket-closing replies).</li>"
         for r in excluded
     )
-    scatter_svg = svg_scatter(themes, trends, churn_b)
+    scatter_svg = svg_scatter(themes, trends, churn_b, highlight_themes)
 
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -460,11 +499,11 @@ def render_report(themes, baseline, trends, evidence_map, noise_count, empty_cou
       <span class="legend-item"><span class="dot dot-gray"></span>Near baseline</span>
       <span class="legend-item"><span class="dot dot-teal"></span>Better than baseline</span>
     </div>
-    <p class="n" style="margin-top:12px">Dot size = ticket volume. Vertical position = churn rate vs. baseline (severity). Horizontal position = 9-day directional volume trend (velocity) — not a confident multi-week trend, see writeup. Only the three themes discussed in the writeup are labeled directly; hover any dot for full detail.</p>
+    <p class="n" style="margin-top:12px">Dot size = ticket volume. Vertical position = churn rate vs. baseline (severity). Horizontal position = 9-day directional volume trend (velocity) — not a confident multi-week trend, see writeup. The most severe, fastest-growing, and largest actionable themes are labeled directly; hover any dot for full detail on the rest.</p>
   </div>
 
   <h2>Themes ({len(actionable)})</h2>
-  <p class="n" style="margin-top:-8px;margin-bottom:12px">&#9733; = discussed by name in the severity vs. velocity chart above and the writeup. <span class="tag tag-muted">volatile</span> = trend % based on fewer than {TREND_LOW_CONFIDENCE_TICKETS} total tickets, sensitive to normal day-to-day noise.</p>
+  <p class="n" style="margin-top:-8px;margin-bottom:12px">&#9733; = the most severe, fastest-growing, or largest actionable theme this run (computed from the data, not fixed). <span class="tag tag-muted">volatile</span> = trend % based on fewer than {TREND_LOW_CONFIDENCE_TICKETS} total tickets, sensitive to normal day-to-day noise.</p>
   <table>
     <thead><tr><th>Theme</th><th class="num">Tickets</th><th class="num">9-day trend</th><th class="num">CSAT</th><th class="num">Resolution</th><th class="num">Repeat %</th><th class="num">Churn %</th></tr></thead>
     <tbody>{rows_html}</tbody>

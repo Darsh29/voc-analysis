@@ -97,6 +97,98 @@ def select_highlight_themes(themes, trends, baseline_churn):
     return {most_severe, fastest_growing, largest}
 
 
+def compute_key_findings(themes, trends, baseline_churn):
+    """Generates the plain-English 'Key Findings' narrative at the top of
+    the report, computed from the actual data rather than written as
+    static prose — for the same reason select_highlight_themes() is
+    data-driven: theme names and which theme is 'most severe' or 'fastest
+    growing' can genuinely differ between pipeline runs (see README failure
+    modes — proven via fresh-clone testing), so hardcoded sentences would
+    silently go stale or wrong on a rerun. This function reads whatever the
+    current run's numbers actually say and writes the sentences fresh."""
+    baseline_churn = float(baseline_churn)
+    candidates = []
+    for row in themes:
+        (
+            theme_id,
+            name,
+            actionable,
+            count,
+            avg_csat,
+            csat_n,
+            res_hrs,
+            repeat_rate,
+            churn_rate,
+            churn_n,
+        ) = row
+        if not actionable:
+            continue
+        growth = trends.get(theme_id)
+        if growth is None:
+            continue
+        severity_pp = (float(churn_rate) - baseline_churn) * 100
+        candidates.append(
+            {
+                "name": name,
+                "growth": growth,
+                "severity": severity_pp,
+                "count": count,
+                "churn_pct": float(churn_rate) * 100,
+            }
+        )
+
+    if not candidates:
+        return "<p>Not enough data to compute key findings.</p>"
+
+    most_severe = max(candidates, key=lambda c: c["severity"])
+    fastest_growing = max(candidates, key=lambda c: c["growth"])
+    largest = max(candidates, key=lambda c: c["count"])
+
+    sentences = []
+
+    growth_note = (
+        f", up {largest['growth']:+.0f}% over the 9-day window"
+        if largest["growth"] > 10
+        else ""
+    )
+    sentences.append(
+        f"<strong>{largest['name']}</strong> is the largest actionable theme, "
+        f"with {largest['count']:,} tickets{growth_note}."
+    )
+
+    if most_severe["name"] == largest["name"]:
+        sentences.append(
+            f"It also shows the strongest link to bad outcomes: churn is "
+            f"{most_severe['severity']:+.1f} percentage points above the "
+            f"{baseline_churn * 100:.1f}% baseline."
+        )
+    else:
+        also_fastest = (
+            " and is also this run's fastest-growing theme"
+            if most_severe["name"] == fastest_growing["name"]
+            else ""
+        )
+        sentences.append(
+            f"<strong>{most_severe['name']}</strong> has the strongest link to bad "
+            f"outcomes: churn is {most_severe['churn_pct']:.1f}% ({most_severe['severity']:+.1f} "
+            f"percentage points above the {baseline_churn * 100:.1f}% baseline){also_fastest}."
+        )
+
+    if fastest_growing["name"] not in (largest["name"], most_severe["name"]):
+        volatile_note = (
+            f" — with {fastest_growing['count']} tickets this run, treat the exact "
+            f"percentage with some caution (see 'volatile' flag below)"
+            if fastest_growing["count"] < TREND_LOW_CONFIDENCE_TICKETS
+            else ""
+        )
+        sentences.append(
+            f"<strong>{fastest_growing['name']}</strong> grew fastest over the "
+            f"9-day window ({fastest_growing['growth']:+.0f}%){volatile_note}."
+        )
+
+    return " ".join(sentences)
+
+
 def fetch_data(conn):
     with conn.cursor() as cur:
         cur.execute("""
@@ -432,6 +524,7 @@ def render_report(themes, baseline, trends, evidence_map, noise_count, empty_cou
     total_tickets = sum(r[3] for r in themes) + noise_count
 
     highlight_themes = select_highlight_themes(themes, trends, churn_b)
+    key_findings_text = compute_key_findings(themes, trends, churn_b)
 
     rows_html = "".join(
         render_theme_row(r, trends, evidence_map, highlight_themes) for r in actionable
@@ -474,6 +567,8 @@ def render_report(themes, baseline, trends, evidence_map, noise_count, empty_cou
   .stat .label {{ font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }}
   h2 {{ font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin: 40px 0 16px; font-weight: 600; }}
   .chart-card {{ background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 20px; }}
+  .findings-card {{ background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--teal); border-radius: 6px; padding: 18px 22px; font-size: 14px; line-height: 1.7; }}
+  .findings-card strong {{ color: var(--text); }}
   table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
   th {{ text-align: left; padding: 10px 12px; color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); }}
   td {{ padding: 10px 12px; border-bottom: 1px solid var(--border); }}
@@ -510,6 +605,11 @@ def render_report(themes, baseline, trends, evidence_map, noise_count, empty_cou
     <div class="stat"><span class="val">{avg_res_b:.1f}h</span><span class="label">Baseline resolution</span></div>
     <div class="stat"><span class="val">{repeat_b * 100:.1f}%</span><span class="label">Baseline repeat contact</span></div>
     <div class="stat"><span class="val">{churn_b * 100:.1f}%</span><span class="label">Baseline churn</span></div>
+  </div>
+
+  <h2>Key findings</h2>
+  <div class="findings-card">
+    {key_findings_text}
   </div>
 
   <h2>Severity vs. velocity</h2>

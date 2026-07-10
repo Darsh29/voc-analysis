@@ -28,6 +28,8 @@
   .stat .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
   h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin: 40px 0 16px; font-weight: 600; }
   .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 20px; }
+  .findings-card { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--teal); border-radius: 6px; padding: 18px 22px; font-size: 14px; line-height: 1.7; }
+  .findings-card strong { color: var(--text); }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { text-align: left; padding: 10px 12px; color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); }
   td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
@@ -64,6 +66,11 @@
     <div class="stat"><span class="val">12.8h</span><span class="label">Baseline resolution</span></div>
     <div class="stat"><span class="val">29.4%</span><span class="label">Baseline repeat contact</span></div>
     <div class="stat"><span class="val">10.0%</span><span class="label">Baseline churn</span></div>
+  </div>
+
+  <h2>Key findings</h2>
+  <div class="findings-card">
+    <strong>Discount and promotion not applied correctly</strong> is the largest actionable theme, with 988 tickets, up +39% over the 9-day window. <strong>Subscription cancellation requests</strong> has the strongest link to bad outcomes: churn is 32.6% (+22.7 percentage points above the 10.0% baseline). <strong>Wrong meal delivered inside correct packaging</strong> grew fastest over the 9-day window (+98%) — with 137 tickets this run, treat the exact percentage with some caution (see 'volatile' flag below).
   </div>
 
   <h2>Severity vs. velocity</h2>
@@ -574,7 +581,7 @@
     <li><strong>No usable message text</strong> — 11 tickets. Message consisted entirely of forwarded marketing content with no customer-authored text — see architecture writeup.</li>
   </ul>
 
-  <footer>Generated 2026-07-09 09:40 &middot; pipeline: ingest &#8594; clean &#8594; embed &#8594; cluster &#8594; label &#8594; consolidate &#8594; analyze &#8594; report</footer>
+  <footer>Generated 2026-07-09 19:55 &middot; pipeline: ingest &#8594; clean &#8594; embed &#8594; cluster &#8594; label &#8594; consolidate &#8594; analyze &#8594; report</footer>
 </div>
 </body>
 </html>

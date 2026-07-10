@@ -8,6 +8,19 @@ repeat contact) — built for the CookUnity AI Engineer take-home assessment.
 **Live output:** open `report.html` in any browser (no server needed) for the
 generated report. See [Quick start](#quick-start) to regenerate it from scratch.
 
+## How this maps to their evaluation criteria
+
+| Their criterion | Where it's addressed |
+|---|---|
+| **Product judgment** — are the insights useful and understandable? | The report's [Key Findings](#) box states conclusions in plain English before any chart/table; non-actionable clusters (e.g. "thank you" replies) are explicitly excluded rather than ranked as issues — see [Key design decisions](#key-design-decisions). |
+| **AI engineering** — grounded, explainable, robust to noisy text? | Every evidence quote is programmatically verified against source text (1 of 64 caught and flagged, not silently trusted); clustering is fully reproducible (`random_state=42`); the real degenerate-clustering failure and its UMAP fix are documented in [Failure modes](#failure-modes--known-limitations). |
+| **Data handling** — pagination, missing fields, sensitive text? | `ingest.py` pages until `next_cursor` is null with no hardcoded limit; `NULL` is preserved as "unknown," never coerced; redacted message text is never logged beyond what's needed — see [Assumptions](#assumptions). |
+| **Execution** — easy to run, inspect, extend? | Single-command stages, a static `report.html` requiring no server, and a genuine fresh-clone test (separate folder, fresh venv, fresh Postgres volume) that found and fixed two real setup gaps before this was called done — see [Failure modes](#failure-modes--known-limitations). |
+
+## Results at a glance
+
+> **TODO (Darsh):** Discount and promotion not applied correctly is the largest actionable theme, with 988 tickets, up +39% over the 9-day window. Subscription cancellation requests has the strongest link to bad outcomes: churn is 32.6% (+22.7 percentage points above the 10.0% baseline). Wrong meal delivered inside correct packaging grew fastest over the 9-day window (+98%) — with 137 tickets this run, treat the exact percentage with some caution (see 'volatile' flag below).
+
 ## What this does, in one paragraph
 
 The pipeline ingests all available tickets via the provided API, cleans and

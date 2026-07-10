@@ -19,7 +19,7 @@ generated report. See [Quick start](#quick-start) to regenerate it from scratch.
 
 ## Results at a glance
 
-> **TODO (Darsh):** Discount and promotion not applied correctly is the largest actionable theme, with 988 tickets, up +39% over the 9-day window. Subscription cancellation requests has the strongest link to bad outcomes: churn is 32.6% (+22.7 percentage points above the 10.0% baseline). Wrong meal delivered inside correct packaging grew fastest over the 9-day window (+98%) — with 137 tickets this run, treat the exact percentage with some caution (see 'volatile' flag below).
+> Discount and promotion not applied correctly is the largest actionable theme, with 988 tickets, up +39% over the 9-day window. Subscription cancellation requests has the strongest link to bad outcomes: churn is 32.6% (+22.7 percentage points above the 10.0% baseline). Wrong meal delivered inside correct packaging grew fastest over the 9-day window (+98%) — with 137 tickets this run, treat the exact percentage with some caution (see 'volatile' flag below).
 
 ## What this does, in one paragraph
 

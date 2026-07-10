@@ -75,6 +75,17 @@ Open `report.html` directly in a browser — no build step, no dev server.
 | Analysis | `analyze.py` | Python + SQL | Once tickets carry a theme, "is this growing" and "does this correlate with bad outcomes" are counting and correlation problems. SQL is exact and auditable; an LLM restating numbers from a prompt would be a needless source of error. |
 | Report | `report.py` | Python -> static HTML | Single self-contained file, zero JS dependencies (evidence toggles use native `<details>`), opens in any browser. Chosen specifically to satisfy "easy to run, inspect, extend" with certainty. |
 
+## Interactive frontend
+
+As an additional deliverable, `voc-frontend/` is a Next.js app that makes
+the same underlying analysis explorable interactively — an Executive
+Summary / Full Detail toggle, a severity-vs-growth scatter chart with
+click-to-filter, and a sortable/searchable theme table with per-theme
+sparklines and evidence quotes. It was built with Claude Code against a
+written spec (`CLAUDE_CODE_SPEC.md`), reads the same analysis via a static
+data export (`export_data.py` -> `report-data.json`) rather than a live
+database connection, and deploys to Vercel with zero configuration.
+
 ## Key design decisions
 
 - **Churn, not CSAT, drives the report's severity axis.** CSAT covers only
@@ -199,9 +210,12 @@ label_clusters.py         Step 6 — Claude labeling -> cluster_labels
 consolidate_themes.py     Step 6 — Claude consolidation -> parent_themes
 analyze.py                Step 7 — trend/outcome SQL -> theme_outcomes, theme_daily_volume
 report.py                 Step 8 — generates report.html
+export_data.py            Step 8b — exports theme/baseline data -> report-data.json (for voc-frontend/)
 experiment_mojibake.py    Diagnostic: validated the encoding-fix approach (not part of the pipeline)
 experiment_quote_strip.py Diagnostic: validated the quote-stripping approach (not part of the pipeline)
 docker-compose.yml        Postgres container definition
 requirements.txt          Pinned dependencies
 .env.example              Required environment variables (no real secrets)
+CLAUDE_CODE_SPEC.md       Build spec for voc-frontend/, written for Claude Code to build against
+voc-frontend/             Interactive Next.js report — reads report-data.json, deployed on Vercel
 ```

@@ -1,0 +1,1372 @@
+{
+  "generatedAt": "2026-07-09T20:14:54.204026",
+  "dateRange": {
+    "start": "2026-04-23",
+    "end": "2026-05-01"
+  },
+  "baseline": {
+    "avgCsat": 4.100671140939597,
+    "avgResolutionHours": 12.784442662389736,
+    "repeatContactRate": 0.2945,
+    "churnRate": 0.0996
+  },
+  "themes": [
+    {
+      "id": 1,
+      "name": "Discount and promotion not applied correctly",
+      "isActionable": true,
+      "ticketCount": 988,
+      "avgCsat": 4.3297297297297295,
+      "csatSampleSize": 185,
+      "avgResolutionHours": 14.10741116751269,
+      "repeatContactRate": 0.3775303643724696,
+      "churnRate": 0.05465587044534413,
+      "churnSampleSize": 891,
+      "evidenceQuotes": [
+        "Hi - I am supposed to get 30% off. Where is it?",
+        "I signed up under plan yo get 50% off first order and 20% off second and third order."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 105
+        },
+        {
+          "date": "2026-04-24",
+          "count": 102
+        },
+        {
+          "date": "2026-04-25",
+          "count": 66
+        },
+        {
+          "date": "2026-04-26",
+          "count": 93
+        },
+        {
+          "date": "2026-04-27",
+          "count": 115
+        },
+        {
+          "date": "2026-04-28",
+          "count": 140
+        },
+        {
+          "date": "2026-04-29",
+          "count": 128
+        },
+        {
+          "date": "2026-04-30",
+          "count": 139
+        },
+        {
+          "date": "2026-05-01",
+          "count": 100
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Subscription cancellation requests",
+      "isActionable": true,
+      "ticketCount": 757,
+      "avgCsat": 3.857142857142857,
+      "csatSampleSize": 91,
+      "avgResolutionHours": 15.694055482166446,
+      "repeatContactRate": 0.20343461030383092,
+      "churnRate": 0.32628797886393657,
+      "churnSampleSize": 648,
+      "evidenceQuotes": [
+        "I want to cancel my plan",
+        "Cancel all orders and subscription!",
+        "Please cancel my membership. No longer interested in the meals or service.",
+        "Please cancel my subscription. I can no longer afford your food.",
+        "please cancel my subscription now. Thank you",
+        "the web site will not allow me and there is no phone number for customer"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 67
+        },
+        {
+          "date": "2026-04-24",
+          "count": 69
+        },
+        {
+          "date": "2026-04-25",
+          "count": 52
+        },
+        {
+          "date": "2026-04-26",
+          "count": 47
+        },
+        {
+          "date": "2026-04-27",
+          "count": 88
+        },
+        {
+          "date": "2026-04-28",
+          "count": 103
+        },
+        {
+          "date": "2026-04-29",
+          "count": 99
+        },
+        {
+          "date": "2026-04-30",
+          "count": 102
+        },
+        {
+          "date": "2026-05-01",
+          "count": 130
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Delivery address and location issues",
+      "isActionable": true,
+      "ticketCount": 475,
+      "avgCsat": 4.333333333333333,
+      "csatSampleSize": 84,
+      "avgResolutionHours": 13.529324894514767,
+      "repeatContactRate": 0.391578947368421,
+      "churnRate": 0.04,
+      "churnSampleSize": 451,
+      "evidenceQuotes": [
+        "the delivery people who cant reach the correctly printed address",
+        "my delivery has been left at my front door in an apartment complex"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 33
+        },
+        {
+          "date": "2026-04-24",
+          "count": 26
+        },
+        {
+          "date": "2026-04-25",
+          "count": 11
+        },
+        {
+          "date": "2026-04-26",
+          "count": 94
+        },
+        {
+          "date": "2026-04-27",
+          "count": 91
+        },
+        {
+          "date": "2026-04-28",
+          "count": 67
+        },
+        {
+          "date": "2026-04-29",
+          "count": 66
+        },
+        {
+          "date": "2026-04-30",
+          "count": 50
+        },
+        {
+          "date": "2026-05-01",
+          "count": 37
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Login, account access, and app/website malfunctions",
+      "isActionable": true,
+      "ticketCount": 423,
+      "avgCsat": 3.896551724137931,
+      "csatSampleSize": 58,
+      "avgResolutionHours": 11.585985748218528,
+      "repeatContactRate": 0.2222222222222222,
+      "churnRate": 0.037825059101654845,
+      "churnSampleSize": 382,
+      "evidenceQuotes": [
+        "The website is down and unable to select meals for the week for my subscription.",
+        "Both emails give the message \"your account is locked. Contact support\"."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 36
+        },
+        {
+          "date": "2026-04-24",
+          "count": 49
+        },
+        {
+          "date": "2026-04-25",
+          "count": 21
+        },
+        {
+          "date": "2026-04-26",
+          "count": 30
+        },
+        {
+          "date": "2026-04-27",
+          "count": 46
+        },
+        {
+          "date": "2026-04-28",
+          "count": 67
+        },
+        {
+          "date": "2026-04-29",
+          "count": 78
+        },
+        {
+          "date": "2026-04-30",
+          "count": 55
+        },
+        {
+          "date": "2026-05-01",
+          "count": 41
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Missing or delayed deliveries",
+      "isActionable": true,
+      "ticketCount": 423,
+      "avgCsat": 3.909090909090909,
+      "csatSampleSize": 55,
+      "avgResolutionHours": 11.678723404255319,
+      "repeatContactRate": 0.3120567375886525,
+      "churnRate": 0.04491725768321513,
+      "churnSampleSize": 395,
+      "evidenceQuotes": [
+        "I did not receive my order due today 4/29/26",
+        "This order never came. Any idea why?",
+        "My food haves not arrived yet it is almost 6:30pm.",
+        "No food delivery yet today. When will it be delivered?"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 36
+        },
+        {
+          "date": "2026-04-24",
+          "count": 17
+        },
+        {
+          "date": "2026-04-25",
+          "count": 19
+        },
+        {
+          "date": "2026-04-26",
+          "count": 113
+        },
+        {
+          "date": "2026-04-27",
+          "count": 67
+        },
+        {
+          "date": "2026-04-28",
+          "count": 61
+        },
+        {
+          "date": "2026-04-29",
+          "count": 51
+        },
+        {
+          "date": "2026-04-30",
+          "count": 44
+        },
+        {
+          "date": "2026-05-01",
+          "count": 15
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Unauthorized orders and charges despite cancellation",
+      "isActionable": true,
+      "ticketCount": 422,
+      "avgCsat": 1.9411764705882353,
+      "csatSampleSize": 51,
+      "avgResolutionHours": 14.249881235154394,
+      "repeatContactRate": 0.2938388625592417,
+      "churnRate": 0.2109004739336493,
+      "churnSampleSize": 350,
+      "evidenceQuotes": [
+        "I did not place this order. Please cancel it and refund my credit card immediately.",
+        "I cancelled my subscription and was charged 117 for an order. I need a refund please",
+        "i did not place this order",
+        "I never placed the order. Cancel and stop trying to contact me."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 43
+        },
+        {
+          "date": "2026-04-24",
+          "count": 52
+        },
+        {
+          "date": "2026-04-25",
+          "count": 42
+        },
+        {
+          "date": "2026-04-26",
+          "count": 32
+        },
+        {
+          "date": "2026-04-27",
+          "count": 35
+        },
+        {
+          "date": "2026-04-28",
+          "count": 52
+        },
+        {
+          "date": "2026-04-29",
+          "count": 61
+        },
+        {
+          "date": "2026-04-30",
+          "count": 52
+        },
+        {
+          "date": "2026-05-01",
+          "count": 53
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Pause, skip, or cancel deliveries due to travel/absence",
+      "isActionable": true,
+      "ticketCount": 399,
+      "avgCsat": 3.9714285714285715,
+      "csatSampleSize": 35,
+      "avgResolutionHours": 11.4062656641604,
+      "repeatContactRate": 0.21052631578947367,
+      "churnRate": 0.03258145363408521,
+      "churnSampleSize": 353,
+      "evidenceQuotes": [
+        "I want to pause an order until further notice from me!!",
+        "I need to pause for next week.",
+        "I will be moving tomorrow May 1st to a new location and cannot collect the delivery",
+        "I am going in a trip and will be out of town for this upcoming delivery",
+        "Need to skip this Sunday's order",
+        "The app will not let me cancel the order for this week."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 39
+        },
+        {
+          "date": "2026-04-24",
+          "count": 67
+        },
+        {
+          "date": "2026-04-25",
+          "count": 34
+        },
+        {
+          "date": "2026-04-26",
+          "count": 25
+        },
+        {
+          "date": "2026-04-27",
+          "count": 31
+        },
+        {
+          "date": "2026-04-28",
+          "count": 29
+        },
+        {
+          "date": "2026-04-29",
+          "count": 62
+        },
+        {
+          "date": "2026-04-30",
+          "count": 60
+        },
+        {
+          "date": "2026-05-01",
+          "count": 52
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Unexpected or duplicate billing charges",
+      "isActionable": true,
+      "ticketCount": 346,
+      "avgCsat": 4.022222222222222,
+      "csatSampleSize": 45,
+      "avgResolutionHours": 11.551445086705202,
+      "repeatContactRate": 0.2774566473988439,
+      "churnRate": 0.03757225433526012,
+      "churnSampleSize": 332,
+      "evidenceQuotes": [
+        "I noticed that I was charged twice on April 24th for the same order.",
+        "Why within two days have I been charged two different times one for $124 on April 23 and the other for $117 on April 21'"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 22
+        },
+        {
+          "date": "2026-04-24",
+          "count": 43
+        },
+        {
+          "date": "2026-04-25",
+          "count": 44
+        },
+        {
+          "date": "2026-04-26",
+          "count": 35
+        },
+        {
+          "date": "2026-04-27",
+          "count": 56
+        },
+        {
+          "date": "2026-04-28",
+          "count": 41
+        },
+        {
+          "date": "2026-04-29",
+          "count": 38
+        },
+        {
+          "date": "2026-04-30",
+          "count": 27
+        },
+        {
+          "date": "2026-05-01",
+          "count": 40
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Meal selection, customization, and dietary preference issues",
+      "isActionable": true,
+      "ticketCount": 337,
+      "avgCsat": 3.3703703703703702,
+      "csatSampleSize": 54,
+      "avgResolutionHours": 13.263772455089821,
+      "repeatContactRate": 0.24629080118694363,
+      "churnRate": 0.06824925816023739,
+      "churnSampleSize": 311,
+      "evidenceQuotes": [
+        "PLEASE DO NOT CHOOSE MY MEALS",
+        "I've requested new meals in the taste profile and we keep getting the same meals repeated each week"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 35
+        },
+        {
+          "date": "2026-04-24",
+          "count": 50
+        },
+        {
+          "date": "2026-04-25",
+          "count": 28
+        },
+        {
+          "date": "2026-04-26",
+          "count": 33
+        },
+        {
+          "date": "2026-04-27",
+          "count": 38
+        },
+        {
+          "date": "2026-04-28",
+          "count": 27
+        },
+        {
+          "date": "2026-04-29",
+          "count": 47
+        },
+        {
+          "date": "2026-04-30",
+          "count": 46
+        },
+        {
+          "date": "2026-05-01",
+          "count": 33
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Meals arrived damaged, unsealed, or spilled",
+      "isActionable": true,
+      "ticketCount": 302,
+      "avgCsat": 4.471698113207547,
+      "csatSampleSize": 53,
+      "avgResolutionHours": 10.64569536423841,
+      "repeatContactRate": 0.31125827814569534,
+      "churnRate": 0.04304635761589404,
+      "churnSampleSize": 292,
+      "evidenceQuotes": [
+        "The ice packs crush the meals - the outer carton was in perfect condition 3 of the meals were opened"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 44
+        },
+        {
+          "date": "2026-04-24",
+          "count": 30
+        },
+        {
+          "date": "2026-04-25",
+          "count": 5
+        },
+        {
+          "date": "2026-04-26",
+          "count": 31
+        },
+        {
+          "date": "2026-04-27",
+          "count": 28
+        },
+        {
+          "date": "2026-04-28",
+          "count": 36
+        },
+        {
+          "date": "2026-04-29",
+          "count": 51
+        },
+        {
+          "date": "2026-04-30",
+          "count": 57
+        },
+        {
+          "date": "2026-05-01",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Grateful or thank-you closing messages",
+      "isActionable": false,
+      "ticketCount": 296,
+      "avgCsat": 4.862068965517241,
+      "csatSampleSize": 58,
+      "avgResolutionHours": 11.682312925170068,
+      "repeatContactRate": 0.38513513513513514,
+      "churnRate": 0.08783783783783784,
+      "churnSampleSize": 274,
+      "evidenceQuotes": [
+        "Thanks for your attention to this Kevin, I appreciate your help.",
+        "Wow.. Thank you so much for understanding and taking care of it.",
+        "Thank you so much, I really appreciate it. Have a nice day!",
+        "The problem wasn't resolved but I figured it out. Thank you!"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 28
+        },
+        {
+          "date": "2026-04-24",
+          "count": 36
+        },
+        {
+          "date": "2026-04-25",
+          "count": 23
+        },
+        {
+          "date": "2026-04-26",
+          "count": 28
+        },
+        {
+          "date": "2026-04-27",
+          "count": 34
+        },
+        {
+          "date": "2026-04-28",
+          "count": 35
+        },
+        {
+          "date": "2026-04-29",
+          "count": 29
+        },
+        {
+          "date": "2026-04-30",
+          "count": 47
+        },
+        {
+          "date": "2026-05-01",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Missing meals from delivery order",
+      "isActionable": true,
+      "ticketCount": 220,
+      "avgCsat": 4.7894736842105265,
+      "csatSampleSize": 38,
+      "avgResolutionHours": 7.751818181818182,
+      "repeatContactRate": 0.15,
+      "churnRate": 0.022727272727272728,
+      "churnSampleSize": 217,
+      "evidenceQuotes": [
+        "I am on the 6 meal plan and I only received 5 meals.",
+        "I only received 7 of my 8 meals in this week's order"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 16
+        },
+        {
+          "date": "2026-04-24",
+          "count": 6
+        },
+        {
+          "date": "2026-04-25",
+          "count": 3
+        },
+        {
+          "date": "2026-04-26",
+          "count": 39
+        },
+        {
+          "date": "2026-04-27",
+          "count": 30
+        },
+        {
+          "date": "2026-04-28",
+          "count": 41
+        },
+        {
+          "date": "2026-04-29",
+          "count": 43
+        },
+        {
+          "date": "2026-04-30",
+          "count": 31
+        },
+        {
+          "date": "2026-05-01",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Delivery bags and ice packs not collected",
+      "isActionable": true,
+      "ticketCount": 214,
+      "avgCsat": 4.363636363636363,
+      "csatSampleSize": 44,
+      "avgResolutionHours": 10.10607476635514,
+      "repeatContactRate": 0.2897196261682243,
+      "churnRate": 0.06542056074766354,
+      "churnSampleSize": 196,
+      "evidenceQuotes": [
+        "the three empty black bags were still not taken back",
+        "The driver forgot to take the old bag at pickup."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 12
+        },
+        {
+          "date": "2026-04-24",
+          "count": 11
+        },
+        {
+          "date": "2026-04-25",
+          "count": 2
+        },
+        {
+          "date": "2026-04-26",
+          "count": 46
+        },
+        {
+          "date": "2026-04-27",
+          "count": 30
+        },
+        {
+          "date": "2026-04-28",
+          "count": 41
+        },
+        {
+          "date": "2026-04-29",
+          "count": 44
+        },
+        {
+          "date": "2026-04-30",
+          "count": 16
+        },
+        {
+          "date": "2026-05-01",
+          "count": 12
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Requests to reschedule or confirm delivery dates",
+      "isActionable": true,
+      "ticketCount": 206,
+      "avgCsat": 4.151515151515151,
+      "csatSampleSize": 33,
+      "avgResolutionHours": 14.261463414634147,
+      "repeatContactRate": 0.35436893203883496,
+      "churnRate": 0.009708737864077669,
+      "churnSampleSize": 180,
+      "evidenceQuotes": [
+        "We will not be home on Sun May 3 and would like to change our delivery to Monday May 4.",
+        "Please change my next date of delivery to May 19. Thank you."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 27
+        },
+        {
+          "date": "2026-04-24",
+          "count": 27
+        },
+        {
+          "date": "2026-04-25",
+          "count": 14
+        },
+        {
+          "date": "2026-04-26",
+          "count": 19
+        },
+        {
+          "date": "2026-04-27",
+          "count": 21
+        },
+        {
+          "date": "2026-04-28",
+          "count": 19
+        },
+        {
+          "date": "2026-04-29",
+          "count": 24
+        },
+        {
+          "date": "2026-04-30",
+          "count": 37
+        },
+        {
+          "date": "2026-05-01",
+          "count": 18
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Failed or declined payment processing",
+      "isActionable": true,
+      "ticketCount": 194,
+      "avgCsat": 4.2,
+      "csatSampleSize": 30,
+      "avgResolutionHours": 10.77720207253886,
+      "repeatContactRate": 0.20618556701030927,
+      "churnRate": 0.0,
+      "churnSampleSize": 178,
+      "evidenceQuotes": [
+        "The payment could not be processed; you can attempt the payment again.",
+        "I got an email saying my card was declined, it should be renewed now"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 20
+        },
+        {
+          "date": "2026-04-24",
+          "count": 23
+        },
+        {
+          "date": "2026-04-25",
+          "count": 23
+        },
+        {
+          "date": "2026-04-26",
+          "count": 11
+        },
+        {
+          "date": "2026-04-27",
+          "count": 19
+        },
+        {
+          "date": "2026-04-28",
+          "count": 21
+        },
+        {
+          "date": "2026-04-29",
+          "count": 28
+        },
+        {
+          "date": "2026-04-30",
+          "count": 23
+        },
+        {
+          "date": "2026-05-01",
+          "count": 26
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Wrong meal delivered inside correct packaging",
+      "isActionable": true,
+      "ticketCount": 137,
+      "avgCsat": 4.310344827586207,
+      "csatSampleSize": 29,
+      "avgResolutionHours": 10.132846715328467,
+      "repeatContactRate": 0.31386861313868614,
+      "churnRate": 0.014598540145985401,
+      "churnSampleSize": 135,
+      "evidenceQuotes": [
+        "The outer sleeve said it was something I ordered (Falafel Artichokes), but the actual meal was some shrimp dish.",
+        "I had the wrong meal delivered in the correct sleeve."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 15
+        },
+        {
+          "date": "2026-04-24",
+          "count": 7
+        },
+        {
+          "date": "2026-04-25",
+          "count": 6
+        },
+        {
+          "date": "2026-04-26",
+          "count": 12
+        },
+        {
+          "date": "2026-04-27",
+          "count": 18
+        },
+        {
+          "date": "2026-04-28",
+          "count": 25
+        },
+        {
+          "date": "2026-04-29",
+          "count": 28
+        },
+        {
+          "date": "2026-04-30",
+          "count": 16
+        },
+        {
+          "date": "2026-05-01",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Melted ice packs causing warm or spoiled food",
+      "isActionable": true,
+      "ticketCount": 129,
+      "avgCsat": 4.666666666666667,
+      "csatSampleSize": 24,
+      "avgResolutionHours": 15.833333333333334,
+      "repeatContactRate": 0.3953488372093023,
+      "churnRate": 0.09302325581395349,
+      "churnSampleSize": 126,
+      "evidenceQuotes": [
+        "the ice packs were pretty much melted",
+        "the ice pack was totally melted inside the bag, the food package was also kind of warm to the touch"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 17
+        },
+        {
+          "date": "2026-04-24",
+          "count": 10
+        },
+        {
+          "date": "2026-04-25",
+          "count": 4
+        },
+        {
+          "date": "2026-04-26",
+          "count": 15
+        },
+        {
+          "date": "2026-04-27",
+          "count": 21
+        },
+        {
+          "date": "2026-04-28",
+          "count": 18
+        },
+        {
+          "date": "2026-04-29",
+          "count": 24
+        },
+        {
+          "date": "2026-04-30",
+          "count": 15
+        },
+        {
+          "date": "2026-05-01",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Spoiled or rotten food quality complaints",
+      "isActionable": true,
+      "ticketCount": 126,
+      "avgCsat": 4.384615384615385,
+      "csatSampleSize": 13,
+      "avgResolutionHours": 16.16031746031746,
+      "repeatContactRate": 0.38095238095238093,
+      "churnRate": 0.03968253968253968,
+      "churnSampleSize": 124,
+      "evidenceQuotes": [
+        "the lettuce was really slimy and inedible",
+        "the fish had a bad smell so I had to discard it"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 19
+        },
+        {
+          "date": "2026-04-24",
+          "count": 7
+        },
+        {
+          "date": "2026-04-25",
+          "count": 10
+        },
+        {
+          "date": "2026-04-26",
+          "count": 11
+        },
+        {
+          "date": "2026-04-27",
+          "count": 16
+        },
+        {
+          "date": "2026-04-28",
+          "count": 14
+        },
+        {
+          "date": "2026-04-29",
+          "count": 14
+        },
+        {
+          "date": "2026-04-30",
+          "count": 21
+        },
+        {
+          "date": "2026-05-01",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Food quality and cooking issues",
+      "isActionable": true,
+      "ticketCount": 116,
+      "avgCsat": 4.2592592592592595,
+      "csatSampleSize": 27,
+      "avgResolutionHours": 13.51896551724138,
+      "repeatContactRate": 0.31896551724137934,
+      "churnRate": 0.10344827586206896,
+      "churnSampleSize": 114,
+      "evidenceQuotes": [
+        "the chicken was undercooked in my Fettuccine Alfredo with chicken dinner. Very pink in the middle",
+        "The steak arrived well done before I even put it in the microwave. It was like trying to eat shoe leather."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 20
+        },
+        {
+          "date": "2026-04-24",
+          "count": 15
+        },
+        {
+          "date": "2026-04-25",
+          "count": 8
+        },
+        {
+          "date": "2026-04-26",
+          "count": 5
+        },
+        {
+          "date": "2026-04-27",
+          "count": 14
+        },
+        {
+          "date": "2026-04-28",
+          "count": 13
+        },
+        {
+          "date": "2026-04-29",
+          "count": 15
+        },
+        {
+          "date": "2026-04-30",
+          "count": 15
+        },
+        {
+          "date": "2026-05-01",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Meal plan quantity mismatch and change issues",
+      "isActionable": true,
+      "ticketCount": 84,
+      "avgCsat": 3.857142857142857,
+      "csatSampleSize": 14,
+      "avgResolutionHours": 11.553571428571429,
+      "repeatContactRate": 0.3333333333333333,
+      "churnRate": 0.011904761904761904,
+      "churnSampleSize": 78,
+      "evidenceQuotes": [
+        "I changed my plan from an eight meals to six meals. I then Chose my six meals for the week. I just got an invoice today representing eight meals",
+        "my plan says 6 meals but my cart is showing 8 meals selected"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 8
+        },
+        {
+          "date": "2026-04-24",
+          "count": 7
+        },
+        {
+          "date": "2026-04-25",
+          "count": 6
+        },
+        {
+          "date": "2026-04-26",
+          "count": 9
+        },
+        {
+          "date": "2026-04-27",
+          "count": 13
+        },
+        {
+          "date": "2026-04-28",
+          "count": 8
+        },
+        {
+          "date": "2026-04-29",
+          "count": 17
+        },
+        {
+          "date": "2026-04-30",
+          "count": 12
+        },
+        {
+          "date": "2026-05-01",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Order confirmation replies and auto-selection cancellations",
+      "isActionable": true,
+      "ticketCount": 78,
+      "avgCsat": 4.333333333333333,
+      "csatSampleSize": 12,
+      "avgResolutionHours": 10.866666666666667,
+      "repeatContactRate": 0.1794871794871795,
+      "churnRate": 0.11538461538461539,
+      "churnSampleSize": 70,
+      "evidenceQuotes": [
+        "Can this order be cancelled and credited to my account?",
+        "PLEASE SKIP THE ORDER FOR MAY 3 DELIVERY."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 10
+        },
+        {
+          "date": "2026-04-24",
+          "count": 14
+        },
+        {
+          "date": "2026-04-25",
+          "count": 5
+        },
+        {
+          "date": "2026-04-26",
+          "count": 3
+        },
+        {
+          "date": "2026-04-27",
+          "count": 4
+        },
+        {
+          "date": "2026-04-28",
+          "count": 9
+        },
+        {
+          "date": "2026-04-29",
+          "count": 15
+        },
+        {
+          "date": "2026-04-30",
+          "count": 14
+        },
+        {
+          "date": "2026-05-01",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Foreign objects and contaminants found in meals",
+      "isActionable": true,
+      "ticketCount": 77,
+      "avgCsat": 4.5,
+      "csatSampleSize": 8,
+      "avgResolutionHours": 12.85,
+      "repeatContactRate": 0.2597402597402597,
+      "churnRate": 0.03896103896103896,
+      "churnSampleSize": 77,
+      "evidenceQuotes": [
+        "there's a worm in my steak as I was chewing\u2026parasitic maybe.",
+        "In my Scallion Butter Branzino dish, I found a feather."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 5
+        },
+        {
+          "date": "2026-04-24",
+          "count": 13
+        },
+        {
+          "date": "2026-04-25",
+          "count": 4
+        },
+        {
+          "date": "2026-04-26",
+          "count": 6
+        },
+        {
+          "date": "2026-04-27",
+          "count": 9
+        },
+        {
+          "date": "2026-04-28",
+          "count": 12
+        },
+        {
+          "date": "2026-04-29",
+          "count": 12
+        },
+        {
+          "date": "2026-04-30",
+          "count": 9
+        },
+        {
+          "date": "2026-05-01",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Customers confirming successful delivery receipt",
+      "isActionable": false,
+      "ticketCount": 65,
+      "avgCsat": 5.0,
+      "csatSampleSize": 8,
+      "avgResolutionHours": 9.464615384615385,
+      "repeatContactRate": 0.8,
+      "churnRate": 0.03076923076923077,
+      "churnSampleSize": 65,
+      "evidenceQuotes": [
+        "Yes I received my order as scheduled.",
+        "Yes, I received the delivery at the correct location."
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 4
+        },
+        {
+          "date": "2026-04-26",
+          "count": 26
+        },
+        {
+          "date": "2026-04-27",
+          "count": 19
+        },
+        {
+          "date": "2026-04-28",
+          "count": 8
+        },
+        {
+          "date": "2026-04-29",
+          "count": 5
+        },
+        {
+          "date": "2026-04-30",
+          "count": 2
+        },
+        {
+          "date": "2026-05-01",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Meal delivery expiration dates too short",
+      "isActionable": true,
+      "ticketCount": 61,
+      "avgCsat": 3.1818181818181817,
+      "csatSampleSize": 11,
+      "avgResolutionHours": 13.90983606557377,
+      "repeatContactRate": 0.3114754098360656,
+      "churnRate": 0.21311475409836064,
+      "churnSampleSize": 60,
+      "evidenceQuotes": [
+        "I recieved multiple meals today that expire in only 2 days- thats unacceptable?",
+        "Why are my 6-day fresh meals being delivered within 3 days of expiration?"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 10
+        },
+        {
+          "date": "2026-04-24",
+          "count": 2
+        },
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-26",
+          "count": 7
+        },
+        {
+          "date": "2026-04-27",
+          "count": 15
+        },
+        {
+          "date": "2026-04-28",
+          "count": 10
+        },
+        {
+          "date": "2026-04-29",
+          "count": 4
+        },
+        {
+          "date": "2026-04-30",
+          "count": 9
+        },
+        {
+          "date": "2026-05-01",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Missing delivery notifications and tracking alerts",
+      "isActionable": true,
+      "ticketCount": 51,
+      "avgCsat": 4.2,
+      "csatSampleSize": 10,
+      "avgResolutionHours": 15.150980392156862,
+      "repeatContactRate": 0.47058823529411764,
+      "churnRate": 0.0,
+      "churnSampleSize": 50,
+      "evidenceQuotes": [
+        "I again received no notifications all day long. I had to login to CookUnity to open my past orders and click on tracking",
+        "I no longer get notified via text or otherwise when my delivery is complete"
+      ],
+      "dailyVolume": [
+        {
+          "date": "2026-04-23",
+          "count": 3
+        },
+        {
+          "date": "2026-04-24",
+          "count": 5
+        },
+        {
+          "date": "2026-04-25",
+          "count": 1
+        },
+        {
+          "date": "2026-04-26",
+          "count": 11
+        },
+        {
+          "date": "2026-04-27",
+          "count": 14
+        },
+        {
+          "date": "2026-04-28",
+          "count": 7
+        },
+        {
+          "date": "2026-04-29",
+          "count": 3
+        },
+        {
+          "date": "2026-04-30",
+          "count": 5
+        },
+        {
+          "date": "2026-05-01",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "noiseCount": 3063,
+  "emptyMessageCount": 11
+}
